@@ -538,3 +538,9 @@ services:
 
 volumes:
   db-config:
+
+networks:
+  default:
+    name: supabase-vgy2aj_default
+  dokploy-network:
+    external: true
