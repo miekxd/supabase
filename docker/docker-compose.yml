@@ -12,10 +12,7 @@ services:
   studio:
     container_name: supabase-studio
     image: supabase/studio:2025.10.01-sha-8460121
-    restart: unless-stopped
-    networks:             
-      - default           
-      - dokploy-network    
+    restart: unless-stopped   
     healthcheck:
       test:
         [
@@ -539,8 +536,3 @@ services:
 volumes:
   db-config:
 
-networks:
-  default:
-    name: supabase-vgy2aj_default
-  dokploy-network:
-    external: true
