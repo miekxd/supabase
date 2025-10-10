@@ -13,6 +13,9 @@ services:
     container_name: supabase-studio
     image: supabase/studio:2025.10.01-sha-8460121
     restart: unless-stopped
+    networks:             
+      - default           
+      - dokploy-network    
     healthcheck:
       test:
         [
