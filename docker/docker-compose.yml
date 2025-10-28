@@ -30,8 +30,8 @@ services:
     depends_on:
       analytics:
         condition: service_healthy
-    #ports:
-      #- "3100:3000"
+    ports:
+      - ${STUDIO_PORT}:3000
     environment:
       # Binds nestjs listener to both IPv4 and IPv6 network interfaces
       HOSTNAME: "::"
