@@ -354,8 +354,9 @@ services:
     # REMOVED: container_name: supabase-analytics
     image: supabase/logflare:1.22.4
     restart: unless-stopped
-    ports:
-      - 4000:4000
+    # REMOVED: ports mapping to avoid conflicts with multiple instances
+    # ports:
+    #   - 4000:4000
     # Uncomment to use Big Query backend for analytics
     # volumes:
     #   - type: bind
@@ -491,9 +492,11 @@ services:
     # REMOVED: container_name: supabase-pooler
     image: supabase/supavisor:2.7.0
     restart: unless-stopped
-    ports:
-      - ${POSTGRES_PORT}:5432
-      - ${POOLER_PROXY_PORT_TRANSACTION}:6543
+    # REMOVED: hardcoded ports to avoid conflicts with multiple instances
+    # If you need external access, configure these in Dokploy or use environment variables
+    # ports:
+    #   - ${POSTGRES_PORT}:5432
+    #   - ${POOLER_PROXY_PORT_TRANSACTION}:6543
     volumes:
       - ./volumes/pooler/pooler.exs:/etc/pooler/pooler.exs:ro,z
     healthcheck:
