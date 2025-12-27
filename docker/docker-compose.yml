@@ -402,6 +402,9 @@ services:
     container_name: supabase-db
     image: supabase/postgres:15.8.1.085
     restart: unless-stopped
+    networks:
+      - default
+      - dokploy-network
     ports:
       - "127.0.0.1:5433:5432" #expose port for local host
     volumes:
@@ -492,6 +495,9 @@ services:
     container_name: supabase-pooler
     image: supabase/supavisor:2.7.0
     restart: unless-stopped
+    networks:
+      - default
+      - dokploy-network
     ports:
       - ${POSTGRES_PORT}:5432
       - ${POOLER_PROXY_PORT_TRANSACTION}:6543
